@@ -576,7 +576,7 @@ export async function getSingBoxWarpConfig (request, env, client) {
     const { warpEndpoints } = proxySettings;
     const config = structuredClone(singboxConfigTemp);
     const proIndicator = client === 'hiddify' ? ' Pro ' : ' ';
-    const dnsObject = buildSingBoxDNS(proxySettings, undefined, true, `💦 Warp${proIndicator}- Best Ping 🚀`);
+    const dnsObject = buildSingBoxDNS(proxySettings, undefined, true, `🔰⚔️ Warp${proIndicator}- Best Ping 🚀`);
     const {rules, rule_set} = buildSingBoxRoutingRules(proxySettings);
     config.dns.servers = dnsObject.servers;
     config.dns.rules = dnsObject.rules;
@@ -585,18 +585,18 @@ export async function getSingBoxWarpConfig (request, env, client) {
     config.route.rule_set = rule_set;
     const selector = config.outbounds[0];
     const warpUrlTest = config.outbounds[1];
-    selector.outbounds = [`💦 Warp${proIndicator}- Best Ping 🚀`, `💦 WoW${proIndicator}- Best Ping 🚀`];
+    selector.outbounds = [`🔰⚔️ Warp${proIndicator}- Best Ping 🚀`, `🔰⚔️ WoW${proIndicator}- Best Ping 🚀`];
     config.outbounds.splice(2, 0, structuredClone(warpUrlTest));
     const WoWUrlTest = config.outbounds[2];
-    warpUrlTest.tag = `💦 Warp${proIndicator}- Best Ping 🚀`;
+    warpUrlTest.tag = `🔰⚔️ Warp${proIndicator}- Best Ping 🚀`;
     warpUrlTest.interval = `${proxySettings.bestWarpInterval}s`;
-    WoWUrlTest.tag = `💦 WoW${proIndicator}- Best Ping 🚀`;
+    WoWUrlTest.tag = `🔰⚔️ WoW${proIndicator}- Best Ping 🚀`;
     WoWUrlTest.interval = `${proxySettings.bestWarpInterval}s`;
     const warpRemarks = [], WoWRemarks = [];
 
     warpEndpoints.split(',').forEach( (endpoint, index) => {
-        const warpRemark = `💦 ${index + 1} - Warp 🇮🇷`;
-        const WoWRemark = `💦 ${index + 1} - WoW 🌍`;
+        const warpRemark = `🔰⚔️ ${index + 1} - Warp 🇮🇷`;
+        const WoWRemark = `🔰⚔️ ${index + 1} - WoW 🌍`;
         const warpOutbound = buildSingBoxWarpOutbound(proxySettings, warpConfigs, warpRemark, endpoint, '', client);
         const WoWOutbound = buildSingBoxWarpOutbound(proxySettings, warpConfigs, WoWRemark, endpoint, warpRemark, client);
         config.outbounds.push(WoWOutbound, warpOutbound);
@@ -662,9 +662,9 @@ export async function getSingBoxCustomConfig(request, env, isFragment) {
     config.route.rule_set = rule_set;
     const selector = config.outbounds[0];
     const urlTest = config.outbounds[1];
-    selector.outbounds = ['💦 Best Ping 💥'];
+    selector.outbounds = ['🔰⚔️ Best Ping 💥'];
     urlTest.interval = `${bestVLTRInterval}s`;
-    urlTest.tag = '💦 Best Ping 💥';
+    urlTest.tag = '🔰⚔️ Best Ping 💥';
     const totalPorts = ports.filter(port => isFragment ? globalThis.defaultHttpsPorts.includes(port) : true);
     let proxyIndex = 1;
     const protocols = [
